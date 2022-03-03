@@ -1,0 +1,20 @@
+<div>
+    <h2 class="faq-heading">Have a question? We can help.</h2>
+    <div *ngFor="let faq of faqList" class="faq">
+        <div class="faq-title" [ngClass]="isShow[faq.id] ? 'active' : 'inactive'">
+            <span class="q-id"> Q{{faq.id}} </span>
+            <span> {{faq.question}} </span>
+            <div class="open show-button" (click)="showAnswer(faq)" [hidden]="isShow[faq.id]">
+                <img src="../../../assets/images/plus-icon.svg" />
+
+            </div>
+            <div class="close show-button" (click)="hideAnswer(faq)" [hidden]="!isShow[faq.id]">
+                <img src="../../../assets/images/plus-icon.svg" />
+            </div>
+
+        </div>
+        <div class="faq-content" [hidden]="!isShow[faq.id]">
+            {{faq.answer}}
+        </div>
+    </div>
+</div>
